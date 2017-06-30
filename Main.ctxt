@@ -1,0 +1,14 @@
+#BlueJ class context
+comment0.params=primaryStage
+comment0.target=void\ start(javafx.stage.Stage)
+comment1.params=we
+comment1.target=void\ displayCloseDialogue(javafx.stage.WindowEvent)
+comment2.params=args
+comment2.target=void\ main(java.lang.String[])
+comment3.params=e
+comment3.target=void\ MenuClicked(javafx.event.ActionEvent)
+comment4.params=e
+comment4.target=void\ mouseClicked(javafx.scene.input.MouseEvent)
+comment5.params=e
+comment5.target=void\ ButtonClicked(javafx.event.ActionEvent)
+numComments=6

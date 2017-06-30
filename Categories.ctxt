@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.params=categoryID\ courseRef\ category
+comment0.target=Categories(java.lang.String,\ java.lang.String,\ java.lang.String)
+comment0.text=\r\n\ Constructor\ for\ objects\ of\ class\ Categories\r\n
+comment1.params=
+comment1.target=java.lang.String\ toString()
+comment2.params=
+comment2.target=java.lang.String\ getCategory()
+comment3.params=courseCode
+comment3.target=java.util.ArrayList\ showCategories(java.lang.String)
+numComments=4
