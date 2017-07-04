@@ -22,8 +22,9 @@ public class Words{
         return word;
     }
     
-    public static char[][] Filler(char[][] grid){
+    public static char[][] Filler(){
         Hashtable letters = new Hashtable();
+        char[][] grid = new char[20][20];
         int ref = 0;
         char letter = '\u0000';
         letters.put(1,'A');

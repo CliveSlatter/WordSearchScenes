@@ -10,10 +10,14 @@ public class MainSceneController{
     Menu gameOptions;
     Menu options;
     MenuBar menuBar;
-    MenuItem wordSearch;
+    Menu wordSearch;
+    MenuItem musicPlayer;
     MenuItem exit;
     MenuItem topics;
     MenuItem about;
+    MenuItem twenty;
+    MenuItem twentyFive;
+    MenuItem thirty;
     BorderPane borderPane;
     Scene scene;
     public MainSceneController(){
@@ -23,11 +27,16 @@ public class MainSceneController{
         file = new Menu("File");
         gameOptions = new Menu("Game Options...");
         options = new Menu("Options");
-        wordSearch = new MenuItem("Word Search");
+        musicPlayer = new MenuItem("Music Player");
+        wordSearch = new Menu("Word Search Options...");
+        twenty = new MenuItem("20 x 20");
+        twentyFive = new MenuItem("25 x 25");
+        thirty = new MenuItem("30 x 30");
         exit = new MenuItem("Exit Application");
         topics = new MenuItem("Topics");
         about = new MenuItem("About");
-        gameOptions.getItems().add(wordSearch);
+        gameOptions.getItems().addAll(wordSearch,musicPlayer);
+        wordSearch.getItems().addAll(twenty,twentyFive,thirty);
         file.getItems().addAll(gameOptions,exit);
         options.getItems().addAll(topics,about);
         menuBar.getMenus().addAll(file,options);

@@ -51,7 +51,7 @@ public class WordSearchController{
     public static GridPane gridPane;
     public static VBox vBox;
     public static Button create;
-    public static ListView listView;
+    public static ListView wordList;
     public static ArrayList<Courses> courseList;
     public static char[][] grid; 
     public static String topic;
@@ -131,7 +131,7 @@ public class WordSearchController{
         borderPane.setTop(menuBar);
         borderPane.setCenter(gridPane);
         borderPane.setLeft(vBox);
-        borderPane.setRight(listView);
+        borderPane.setRight(wordList);
 
     }
 

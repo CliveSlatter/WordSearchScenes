@@ -48,7 +48,7 @@ public class WelcomeSceneController
     public WelcomeSceneController()
     {
         root = new Pane();
-        welcomeScene = new Scene(root,600,500);
+        welcomeScene = new Scene(root,1000,800);
         
         msg = new Text("Welcome to Clive's Word Search Games");
         msg.setTextOrigin(VPos.TOP);
@@ -72,7 +72,7 @@ public class WelcomeSceneController
         text = new Text("Clive's Stuff");
         text.setFont(Font.font(100));
         text.setFill(Color.YELLOW);
-        text.setLayoutX(50);
+        text.setLayoutX(250);
         text.setLayoutY(200);
         
         blend = new Blend();
@@ -117,7 +117,7 @@ public class WelcomeSceneController
         text.setEffect(blend);
         msg.setEffect(blend);
         
-        myBI= new BackgroundImage(new Image("Charlie.jpg",500,500,true,true),
+        myBI= new BackgroundImage(new Image("Charlie.jpg",1000,800,false,true),
             BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
             BackgroundSize.DEFAULT);
         root.setBackground(new Background(myBI));

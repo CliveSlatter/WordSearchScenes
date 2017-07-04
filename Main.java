@@ -29,6 +29,7 @@ public class Main extends Application
     public static DatabaseConnection database;
     WelcomeSceneController wSc;
     public static MainSceneController mSc;
+    public static MusicPlayerSceneController playController;
     public static WordSearchController wordSc;
     public static Categories categories;
     //PaneSceneController psc = new PaneSceneController();
@@ -40,9 +41,12 @@ public class Main extends Application
         wSc = new WelcomeSceneController();
         mSc = new MainSceneController();
         wordSc = new WordSearchController();
+        playController = new MusicPlayerSceneController();
+        //playController = new MusicPlayerController();
         theStage.setOnCloseRequest((WindowEvent we) -> displayCloseDialogue(we));
         wSc.root.setOnMousePressed(e -> mouseClicked(e));
         mSc.wordSearch.setOnAction(e-> MenuClicked(e));
+        mSc.musicPlayer.setOnAction(e-> MenuClicked(e));
         wordSc.create.setOnAction(e-> ButtonClicked(e));
         wordSc.courses.setOnAction(e-> ButtonClicked(e));
         primaryStage.setTitle("Welcome");
@@ -66,6 +70,8 @@ public class Main extends Application
     public static void MenuClicked(ActionEvent e){
         if(e.getSource()==mSc.wordSearch)
             theStage.setScene(wordSc.scene);
+        else if(e.getSource()==mSc.musicPlayer)
+            theStage.setScene(playController.playerScene);
     }
 
     public static void mouseClicked(MouseEvent e){
@@ -80,10 +86,13 @@ public class Main extends Application
     public static void ButtonClicked(ActionEvent e){
         if(e.getSource()==wordSc.create){
             wordSc.gridPane.getChildren().clear();
-            
+            String courseID = wordSc.courses.getText();
+            String topic = wordSc.categories.getText();
             char[][] grid = new char[20][20];
             //grid = wordSc.AddWords();
-            grid = wordSc.CreateGrid();
+            
+            
+            grid = Words.Filler();
 
             for(int r = 0; r < 20; r++){
                 for(int c = 0; c < 20; c++){
