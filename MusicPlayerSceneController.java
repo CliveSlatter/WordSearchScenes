@@ -52,10 +52,10 @@ public class MusicPlayerSceneController{
         
         listView = new ListView();
         tableView = new TableView();
-        trackTitleCol = new TableColumn("Track Name");
-        trackArtistCol = new TableColumn("Artist Name");
-        trackStudioCol = new TableColumn("Recording Studio");
-        trackGenreCol = new TableColumn("Genre");        
+        trackTitleCol = new TableColumn("ID");
+        trackArtistCol = new TableColumn("Track Name");
+        trackStudioCol = new TableColumn("Artist");
+        trackGenreCol = new TableColumn("Duration");        
 
         targetList = listView.getItems();
         //Music.ReadAll(targetList);    
@@ -63,22 +63,22 @@ public class MusicPlayerSceneController{
         tableView.setEditable(true);
         trackTitleCol.setMinWidth(100);
         trackTitleCol.setCellValueFactory(
-            new PropertyValueFactory<Music, String>("title"));
+            new PropertyValueFactory<Music, String>("trackId"));
 
         trackArtistCol.setMinWidth(100);
         trackArtistCol.setCellValueFactory(
-            new PropertyValueFactory<Music, String>("artist"));
+            new PropertyValueFactory<Music, String>("trackTitle"));
 
         trackStudioCol.setMinWidth(200);
         trackStudioCol.setCellValueFactory(
-            new PropertyValueFactory<Music, String>("studio"));
+            new PropertyValueFactory<Music, String>("artistName"));
 
         trackGenreCol.setMinWidth(100);
         trackGenreCol.setCellValueFactory(
-            new PropertyValueFactory<Music, String>("format"));        
+            new PropertyValueFactory<Music, String>("duration"));        
         
         // assigns the contents of the observable list from the readObs() method
-        //tableView.setItems(Music.readObs());
+        tableView.setItems(Music.readObs());
 
         // adds the columns above to the TableView control
         tableView.getColumns().addAll(trackTitleCol, trackArtistCol, trackStudioCol, trackGenreCol);  
