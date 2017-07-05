@@ -1,6 +1,7 @@
 import javafx.event.ActionEvent;
 import javafx.stage.WindowEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.input.MouseButton;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
@@ -49,11 +50,21 @@ public class Main extends Application
         mSc.musicPlayer.setOnAction(e-> MenuClicked(e));
         wordSc.create.setOnAction(e-> ButtonClicked(e));
         wordSc.courses.setOnAction(e-> ButtonClicked(e));
+        //playController.tableRow.setOnMouseClicked(e-> tableViewEvent(e));
         primaryStage.setTitle("Welcome");
         primaryStage.setScene(wSc.welcomeScene);
         primaryStage.show();
     }
 
+    public static void tableViewEvent(MouseEvent e){
+        if(e.getButton()==MouseButton.PRIMARY){
+            //if(e.getClickCount() == 2){
+                System.out.println("Button clicked");
+            //}
+        }
+        e.consume();        
+    }
+    
     public static void displayCloseDialogue(WindowEvent we){
         System.exit(0);
     }

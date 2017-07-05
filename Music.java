@@ -12,6 +12,11 @@ public class Music {
     private TrackDuration duration;
     private static final String FILENAME = "MusicInfo.txt";
     
+    @Override
+    public String toString(){
+        return trackTitle;
+    }
+    
     public Music(int trackId, String trackTitle, String artistName, TrackDuration duration) {
         this.trackId = trackId;
         this.trackTitle = trackTitle;
