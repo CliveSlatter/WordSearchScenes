@@ -92,7 +92,7 @@ public class MusicPlayerSceneController{
         // adds the columns above to the TableView control
         tableView.getColumns().addAll(trackTitleCol, trackArtistCol, trackStudioCol, trackGenreCol); 
         tableView.setOnMouseClicked((MouseEvent event) -> {
-        if(event.getButton().equals(MouseButton.PRIMARY) && ){
+        if(event.getButton().equals(MouseButton.PRIMARY) && event.getClickCount()==2){
             String track = tableView.getSelectionModel().getSelectedItem() + ".mp3";
             mp = new MediaPlayer(new Media(MusicPlayerSceneController.class.getResource(track).toString()));
             mp.play();

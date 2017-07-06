@@ -25,7 +25,7 @@ public class MainSceneController{
         scene = new Scene(borderPane,1000,800);
         menuBar = new MenuBar();
         file = new Menu("File");
-        gameOptions = new Menu("Game Options...");
+        gameOptions = new Menu("Application Options...");
         options = new Menu("Options");
         musicPlayer = new MenuItem("Music Player");
         wordSearch = new Menu("Word Search Options...");
