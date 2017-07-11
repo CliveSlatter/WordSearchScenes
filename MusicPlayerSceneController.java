@@ -24,6 +24,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import java.util.List;
 import javafx.scene.media.MediaPlayer;
+import javafx.scene.media.MediaPlayer.Status;
 import javafx.scene.media.Media;
 public class MusicPlayerSceneController{
     Scene playerScene;
@@ -37,13 +38,13 @@ public class MusicPlayerSceneController{
     MenuItem standard;
     ListView<Music> listView;
     List<Music> targetList;
-    TableView<Music> tableView;
+    public static TableView<Music> tableView;
     TableRow<Music> tableRow;
     TableColumn<Music, String> trackTitleCol;
     TableColumn<Music, String> trackArtistCol;
     TableColumn<Music, String> trackStudioCol;
     TableColumn<Music, String> trackGenreCol;
-    MediaPlayer mp;
+    public static MediaPlayer mp;
     public MusicPlayerSceneController(){
         borderPane = new BorderPane();
         playerScene = new Scene(borderPane, 1000, 800);
@@ -91,19 +92,28 @@ public class MusicPlayerSceneController{
 
         // adds the columns above to the TableView control
         tableView.getColumns().addAll(trackTitleCol, trackArtistCol, trackStudioCol, trackGenreCol); 
-        tableView.setOnMouseClicked((MouseEvent event) -> {
-        if(event.getButton().equals(MouseButton.PRIMARY) && event.getClickCount()==2){
-            String track = tableView.getSelectionModel().getSelectedItem() + ".mp3";
-            mp = new MediaPlayer(new Media(MusicPlayerSceneController.class.getResource(track).toString()));
-            mp.play();
-        }
-    });
+        tableView.setOnMouseClicked(e-> MusicPlaying(e));
+
         /*tableView.getSelectionModel().setCellSelectionEnabled(true); */ // used if you want to be able to select individual cells
+        listView = new ListView();
+        borderPane.setRight(listView); 
         borderPane.setTop(menuBar);
         borderPane.setCenter(tableView);
     }
     
-
+    public static void MusicPlaying(MouseEvent e){
+        if(e.getButton().equals(MouseButton.PRIMARY) && e.getClickCount()==2){
+            System.out.println("Double click selected");
+            if(mp.getStatus() == Status.PLAYING){
+                System.out.println("Music is playing");
+                mp.stop();
+            }
+        }
+            String track = tableView.getSelectionModel().getSelectedItem() + ".mp3";
+            mp = new MediaPlayer(new Media(MusicPlayerSceneController.class.getResource(track).toString()));
+            System.out.println(mp.getStatus());
+            mp.play();
+        }
     
     public Pane CreatePane(){
         

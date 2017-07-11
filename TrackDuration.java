@@ -7,7 +7,7 @@ public class TrackDuration
     @Override
     public String toString()
     {
-        return trackMinutes + "'" + trackSeconds + Character.toChars(34);
+        return trackMinutes + "'" + trackSeconds + '"';
     }
     
     public TrackDuration(int trackMinutes, int trackSeconds)

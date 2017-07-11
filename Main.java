@@ -23,7 +23,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import java.util.ArrayList;
-
+import javafx.animation.PauseTransition;
 public class Main extends Application
 {
     public static Stage theStage;
@@ -34,7 +34,7 @@ public class Main extends Application
     public static WordSearchController wordSc;
     public static Categories categories;
     //PaneSceneController psc = new PaneSceneController();
-
+    public static PauseTransition delay;
     @Override
     public void start(Stage primaryStage){
         database = new DatabaseConnection("WordSearch.db");
@@ -51,11 +51,21 @@ public class Main extends Application
         wordSc.create.setOnAction(e-> ButtonClicked(e));
         wordSc.courses.setOnAction(e-> ButtonClicked(e));
         //playController.tableRow.setOnMouseClicked(e-> tableViewEvent(e));
+        
+        delay = new PauseTransition(Duration.seconds(10));
+        delay.setOnFinished( event -> ChangeScene(event));
+        delay.play();
+        
         primaryStage.setTitle("Welcome");
         primaryStage.setScene(wSc.welcomeScene);
         primaryStage.show();
     }
 
+    public static void ChangeScene(ActionEvent event){
+        delay.stop();
+        theStage.setScene(mSc.scene);
+    }
+    
     public static void tableViewEvent(MouseEvent e){
         if(e.getButton()==MouseButton.PRIMARY){
             //if(e.getClickCount() == 2){
@@ -79,10 +89,13 @@ public class Main extends Application
     }
 
     public static void MenuClicked(ActionEvent e){
-        if(e.getSource()==mSc.wordSearch)
+        if(e.getSource()==mSc.wordSearch){
+            delay.stop();
             theStage.setScene(wordSc.scene);
-        else if(e.getSource()==mSc.musicPlayer)
+
+        }else if(e.getSource()==mSc.musicPlayer){
             theStage.setScene(playController.playerScene);
+        }
     }
 
     public static void mouseClicked(MouseEvent e){
@@ -101,16 +114,22 @@ public class Main extends Application
             String topic = wordSc.categories.getText();
             char[][] grid = new char[20][20];
             //grid = wordSc.AddWords();
-            
-            
-            grid = Words.Filler();
+            ArrayList<Words> wordList = Words.selectWords(courseID, topic);
+            for(Words words : wordList){
+                System.out.println(words);
+                grid = Words.AddWords(grid, words.getWord());
+                wordSc.wordList.getItems().add(words.getWord());
+            }
 
+            grid = Words.Filler();
+            
+            
             for(int r = 0; r < 20; r++){
                 for(int c = 0; c < 20; c++){
                     char letter = grid[r][c];
                     Button button = new Button(Character.toString(letter));
-                    button.setMaxWidth(30);
-                    button.setMaxHeight(30);
+                    button.setMaxWidth(35);
+                    button.setMaxHeight(35);
                     wordSc.gridPane.add(button, c, r);            
                 }
             }            

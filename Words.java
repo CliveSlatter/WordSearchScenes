@@ -19,7 +19,7 @@ public class Words{
     }    
     
     @Override public String toString(){
-        return word;
+        return word + ": " + used;
     }
     
     public static char[][] Filler(){

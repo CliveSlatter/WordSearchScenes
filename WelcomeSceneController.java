@@ -120,6 +120,8 @@ public class WelcomeSceneController
         myBI= new BackgroundImage(new Image("Charlie.jpg",1000,800,false,true),
             BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
             BackgroundSize.DEFAULT);
+            
+
         root.setBackground(new Background(myBI));
         root.getChildren().addAll(msg,text);
     }

@@ -59,7 +59,7 @@ public class WordSearchController{
 
     public WordSearchController(){
         borderPane = new BorderPane();
-        scene = new Scene(borderPane,1000,800);
+        scene = new Scene(borderPane,1200,900);
         menuBar = new MenuBar();
         game = new Menu("Game");
         options = new Menu("Options");
@@ -128,6 +128,9 @@ public class WordSearchController{
                 gridPane.add(button, c, r);            
             }
         }
+        
+        wordList = new ListView();
+        
         borderPane.setTop(menuBar);
         borderPane.setCenter(gridPane);
         borderPane.setLeft(vBox);
