@@ -116,13 +116,11 @@ public class Main extends Application
             //grid = wordSc.AddWords();
             ArrayList<Words> wordList = Words.selectWords(courseID, topic);
             for(Words words : wordList){
-                System.out.println(words);
                 grid = Words.AddWords(grid, words.getWord());
                 wordSc.wordList.getItems().add(words.getWord());
             }
-
-            grid = Words.Filler();
             
+            grid = Words.Filler(grid);
             
             for(int r = 0; r < 20; r++){
                 for(int c = 0; c < 20; c++){
